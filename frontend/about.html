@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เกี่ยวกับเรา | ร้านข้าวมันไก่ท้ายซอยไอยรา 21</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #fecf40 0%, #e87325 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .about-hero p {
+            font-size: 1.3em;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .about-section {
+            margin-bottom: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-section h2 {
+            color: #e87325;
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .about-section h2 i {
+            font-size: 1.2em;
+        }
+        
+        .about-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #e87325;
+        }
+        
+        .value-card i {
+            font-size: 3em;
+            color: #e87325;
+            margin-bottom: 20px;
+        }
+        
+        .value-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .story-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .story-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e87325;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #e87325;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #e87325;
+        }
+        
+        .timeline-item h3 {
+            color: #e87325;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #e87325;
+        }
+        
+        .team-member h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            color: #e87325;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .team-member .bio {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <a href="index.html" class="logo-area">
+            <img src="img/demologo.png" alt="โลโก้เว็บไซต์" class="header-img">
+            <span class="header-text">ร้านข้าวมันไก่ท้ายซอยไอยรา 21</span>
+        </a>
+        
+        <!-- Navigation Menu -->
+        <nav class="header-nav">
+            <ul>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="about.html" class="active">เกี่ยวกับเรา</a></li>
+                <li><a href="services.html">บริการ</a></li>
+                <li><a href="contact.html">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <h1>เกี่ยวกับเรา</h1>
+        <p>ร้านข้าวมันไก่ท้ายซอยไอยรา 21 - รสชาติดั้งเดิมที่คุณรัก</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="about-content">
+        <!-- Our Story -->
+        <section class="about-section">
+            <h2><i class="fas fa-heart"></i>เรื่องราวของเรา</h2>
+            <p>ร้านข้าวมันไก่ท้ายซอยไอยรา 21 เริ่มต้นจากความรักในการทำอาหารและความตั้งใจที่จะนำเสนอรสชาติดั้งเดิมของข้าวมันไก่ที่อร่อยถูกใจลูกค้า</p>
+            <p>เราเชื่อว่าอาหารที่ดีต้องทำด้วยใจและใช้ส่วนผสมคุณภาพสูง เพื่อให้ลูกค้าได้รับประทานอาหารที่อร่อย ปลอดภัย และคุ้มค่า</p>
+            
+            <div class="story-timeline">
+                <div class="timeline-item">
+                    <h3>2020 - เริ่มต้น</h3>
+                    <p>เปิดร้านครั้งแรกด้วยเมนูข้าวมันไก่ต้มและทอด พร้อมน้ำจิ้มสูตรพิเศษ</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2021 - ขยายเมนู</h3>
+                    <p>เพิ่มเมนูข้าวมันไก่ผสมและแพคอิ่มอวม เพื่อตอบสนองความต้องการที่หลากหลาย</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2023 - ระบบออนไลน์</h3>
+                    <p>เปิดระบบสั่งซื้อออนไลน์และชำระเงินผ่าน PromptPay เพื่อความสะดวกของลูกค้า</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2025 - ปัจจุบัน</h3>
+                    <p>ยังคงรักษาคุณภาพและรสชาติเดิม พร้อมพัฒนาบริการให้ดีขึ้นเรื่อยๆ</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Values -->
+        <section class="about-section">
+            <h2><i class="fas fa-star"></i>ค่านิยมของเรา</h2>
+            <p>เรามุ่งมั่นที่จะให้บริการที่ดีที่สุดแก่ลูกค้าด้วยค่านิยมหลักดังนี้</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>คุณภาพอาหาร</h3>
+                    <p>ใช้ส่วนผสมสดใหม่ ปรุงสดทุกวัน เพื่อรสชาติที่ดีที่สุด</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>ทำด้วยใจ</h3>
+                    <p>ทุกจานทำด้วยความใส่ใจและความรักในการทำอาหาร</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>บริการดี</h3>
+                    <p>ยิ้มแย้มเป็นมิตร ให้บริการด้วยความเต็มใจ</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>ปลอดภัย</h3>
+                    <p>รักษาความสะอาดและความปลอดภัยของอาหารเป็นหลัก</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team -->
+        <section class="about-section">
+            <h2><i class="fas fa-users"></i>ทีมงานของเรา</h2>
+            <p>ทีมงานที่มีประสบการณ์และความเชี่ยวชาญในการทำอาหาร</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="img/demologo.png" alt="แม่ครัวหลัก">
+                    <h3>แม่ครัวหลัก</h3>
+                    <p>เชฟประจำร้าน</p>
+                    <div class="bio">มีประสบการณ์ทำข้าวมันไก่มากว่า 10 ปี ดูแลการปรุงอาหารทุกจาน</div>
+                </div>
+                <div class="team-member">
+                    <img src="img/demologo.png" alt="พนักงานเสิร์ฟ">
+                    <h3>ทีมเสิร์ฟ</h3>
+                    <p>พนักงานบริการ</p>
+                    <div class="bio">ให้บริการลูกค้าด้วยรอยยิ้มและความเต็มใจ</div>
+                </div>
+                <div class="team-member">
+                    <img src="img/demologo.png" alt="เจ้าของร้าน">
+                    <h3>เจ้าของร้าน</h3>
+                    <p>ผู้ก่อตั้ง</p>
+                    <div class="bio">ดูแลการดำเนินงานและพัฒนาร้านให้ดีขึ้นเรื่อยๆ</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Promise -->
+        <section class="about-section">
+            <h2><i class="fas fa-handshake"></i>คำมั่นสัญญาของเรา</h2>
+            <p>เรามุ่งมั่นที่จะให้ลูกค้าได้รับประสบการณ์ที่ดีที่สุดเมื่อมาทานอาหารที่ร้านของเรา</p>
+            <ul style="font-size: 1.1em; line-height: 2; color: #555; margin-left: 20px;">
+                <li>อาหารสดใหม่ ปรุงสดทุกวัน</li>
+                <li>รสชาติที่คงที่และอร่อย</li>
+                <li>บริการที่รวดเร็วและเป็นมิตร</li>
+                <li>ราคาที่เป็นธรรมและคุ้มค่า</li>
+                <li>ความสะอาดและความปลอดภัย</li>
+                <li>การพัฒนาบริการอย่างต่อเนื่อง</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2025 ร้านข้าวมันไก่ท้ายซอยไอยรา 21. สงวนลิขสิทธิ์.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

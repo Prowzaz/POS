@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - SLIPOK_API_KEY=SLIPOK58LPD9J
+      - SLIPOK_BRANCH_ID=54831
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+    volumes:
+      - ./backend/database:/app/database
+    restart: unless-stopped
+
+  frontend:
+    build: ./kaomankai
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+

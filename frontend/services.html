@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บริการของเรา | ร้านข้าวมันไก่ท้ายซอยไอยรา 21</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .services-hero {
+            background: linear-gradient(135deg, #e87325 0%, #fecf40 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .services-hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .services-hero p {
+            font-size: 1.3em;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .services-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .service-section {
+            margin-bottom: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-section h2 {
+            color: #e87325;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .service-section h2 i {
+            font-size: 1.2em;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .menu-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #e87325;
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .menu-item h3 {
+            color: #333;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        
+        .menu-item p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .menu-item .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #e87325;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #e87325;
+        }
+        
+        .feature-card i {
+            font-size: 3em;
+            color: #e87325;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            position: relative;
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: #e87325;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .process-step:nth-child(1)::before { content: '1'; }
+        .process-step:nth-child(2)::before { content: '2'; }
+        .process-step:nth-child(3)::before { content: '3'; }
+        .process-step:nth-child(4)::before { content: '4'; }
+        
+        .process-step h3 {
+            color: #333;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+        
+        .process-step p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .promo-section {
+            background: linear-gradient(135deg, #e87325 0%, #fecf40 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .promo-section h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .promo-codes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .promo-code {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 25px;
+            border: 2px solid rgba(255,255,255,0.3);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <a href="index.html" class="logo-area">
+            <img src="img/demologo.png" alt="โลโก้เว็บไซต์" class="header-img">
+            <span class="header-text">ร้านข้าวมันไก่ท้ายซอยไอยรา 21</span>
+        </a>
+        
+        <!-- Navigation Menu -->
+        <nav class="header-nav">
+            <ul>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="about.html">เกี่ยวกับเรา</a></li>
+                <li><a href="services.html" class="active">บริการ</a></li>
+                <li><a href="contact.html">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <h1>บริการของเรา</h1>
+        <p>บริการครบครัน สะดวก รวดเร็ว และอร่อย</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="services-content">
+        <!-- Menu Section -->
+        <section class="service-section">
+            <h2><i class="fas fa-utensils"></i>เมนูอาหารของเรา</h2>
+            <p>เมนูข้าวมันไก่หลากหลายแบบ พร้อมรสชาติที่อร่อยถูกใจ</p>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="img/kaitom.jpg" alt="ข้าวมันไก่ต้ม">
+                    <h3>ข้าวมันไก่ต้ม</h3>
+                    <p>ไก่ต้มเนื้อนุ่มฉ่ำ เสิร์ฟพร้อมน้ำจิ้มรสเด็ด ราคาเริ่มต้น 50 บาท</p>
+                    <div class="price">50฿</div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="img/kaitod.jpg" alt="ข้าวมันไก่ทอด">
+                    <h3>ข้าวมันไก่ทอด</h3>
+                    <p>ไก่ทอดกรอบนอกนุ่มใน ทานคู่กับข้าวมันหอมๆ ราคาเริ่มต้น 50 บาท</p>
+                    <div class="price">50฿</div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="img/pasom.jpg" alt="ข้าวมันไก่ผสม">
+                    <h3>ข้าวมันไก่ผสม (ต้ม + ทอด)</h3>
+                    <p>เลือกไม่ถูกก็จัดไปเลยทั้งสองอย่างในจานเดียว ราคาเริ่มต้น 50 บาท</p>
+                    <div class="price">50฿</div>
+                </div>
+            
+                <div class="menu-item">
+                    <img src="img/IMG_5366.HEIC" alt="Tip น้องมารวย">
+                    <h3>Tip น้องมารวย</h3>
+                    <p>เพิ่มกำลังใจให้น้องมารวยในการทำงานต่อไป ราคาเริ่มต้น 5 บาท</p>
+                    <div class="price">5฿</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="service-section">
+            <h2><i class="fas fa-star"></i>จุดเด่นของเรา</h2>
+            <p>บริการที่ทำให้ลูกค้าประทับใจ</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>สั่งซื้อออนไลน์</h3>
+                    <p>สั่งซื้อผ่านเว็บไซต์ได้ง่ายๆ ไม่ต้องรอคิว</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-qrcode"></i>
+                    <h3>ชำระเงิน PromptPay</h3>
+                    <p>ชำระเงินสะดวกผ่าน QR Code ไม่ต้องเตรียมเงินสด</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>บริการรวดเร็ว</h3>
+                    <p>เตรียมอาหารให้ลูกค้าในเวลาที่เหมาะสม</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>อาหารสดใหม่</h3>
+                    <p>ใช้ส่วนผสมสดใหม่ ปรุงสดทุกวัน</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>ทำด้วยใจ</h3>
+                    <p>ทุกจานทำด้วยความใส่ใจและความรัก</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>ปลอดภัย</h3>
+                    <p>รักษาความสะอาดและความปลอดภัยของอาหาร</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Process -->
+        <section class="service-section">
+            <h2><i class="fas fa-list-ol"></i>วิธีการสั่งซื้อ</h2>
+            <p>ขั้นตอนง่ายๆ เพียง 4 ขั้นตอน</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <h3>เลือกเมนู</h3>
+                    <p>เลือกเมนูที่ต้องการและจำนวนที่ต้องการ</p>
+                </div>
+                
+                <div class="process-step">
+                    <h3>กรอกข้อมูล</h3>
+                    <p>กรอกชื่อและเบอร์โทรศัพท์สำหรับติดต่อ</p>
+                </div>
+                
+                <div class="process-step">
+                    <h3>ชำระเงิน</h3>
+                    <p>สแกน QR Code เพื่อชำระเงินผ่าน PromptPay</p>
+                </div>
+                
+                <div class="process-step">
+                    <h3>รับอาหาร</h3>
+                    <p>รอรับอาหารที่ร้านหรือตามเวลาที่นัดหมาย</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promo Codes -->
+        <section class="service-section">
+            <h2><i class="fas fa-tags"></i>รหัสโปรโมชั่น</h2>
+            <p>ใช้รหัสโปรโมชั่นเพื่อรับส่วนลดพิเศษ</p>
+            
+            <div class="promo-section">
+                <h3>รหัสส่วนลดพิเศษ</h3>
+                <p>ใช้รหัสเหล่านี้เมื่อสั่งซื้อเพื่อรับส่วนลด</p>
+                
+                <div class="promo-codes">
+                    <div class="promo-code">WELCOME10</div>
+                    <div class="promo-code">SAVE20</div>
+                    <div class="promo-code">NEWUSER</div>
+                </div>
+                
+                <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                    *เงื่อนไขการใช้งานตามที่ร้านกำหนด
+                </p>
+            </div>
+        </section>
+
+        <!-- Additional Services -->
+        <section class="service-section">
+            <h2><i class="fas fa-concierge-bell"></i>บริการเพิ่มเติม</h2>
+            <p>บริการเสริมที่เรามอบให้ลูกค้า</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>น้ำจิ้มพิเศษ</h3>
+                    <p>น้ำจิ้มสูตรพิเศษที่ทำเองในร้าน รสชาติเข้มข้น</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>คำแนะนำเมนู</h3>
+                    <p>ทีมงานพร้อมให้คำแนะนำเมนูที่เหมาะสม</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>บริการตามเวลา</h3>
+                    <p>เปิดบริการทุกวัน ตามเวลาที่กำหนด</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-smile"></i>
+                    <h3>บริการเป็นมิตร</h3>
+                    <p>ทีมงานยิ้มแย้ม ให้บริการด้วยความเต็มใจ</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2025 ร้านข้าวมันไก่ท้ายซอยไอยรา 21. สงวนลิขสิทธิ์.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

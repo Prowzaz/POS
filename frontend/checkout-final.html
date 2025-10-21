@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ยืนยันคำสั่งซื้อ | ร้านข้าวมันไก่ท้ายซอยไอยรา 21</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Animation สำหรับเตือนเมื่อยังไม่ชำระเงิน */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        
+        /* เพิ่มสไตล์สำหรับปุ่มยืนยันการชำระเงิน */
+        #payment-confirmed-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        #payment-confirmed-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        #payment-confirmed-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        /* แสดงสถานะการชำระเงิน */
+        .payment-status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .payment-status-indicator.paid {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+        
+        .payment-status-indicator.pending {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeeba;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo-area">
+            <img src="img/demologo.png" alt="โลโก้เว็บไซต์" class="header-img">
+            <span class="header-text">ร้านข้าวมันไก่ท้ายซอยไอยรา 21</span>
+        </a>
+        <nav class="header-nav">
+            <ul>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="about.html">เกี่ยวกับเรา</a></li>
+                <li><a href="services.html">บริการ</a></li>
+                <li><a href="contact.html">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="checkout-page">
+        <h1 class="section-title">สรุปคำสั่งซื้อ</h1>
+
+        <section class="checkout-card">
+            <h2>รายการของคุณ</h2>
+            <div id="summary-items-list"></div>
+            
+            <div class="promo-code-container">
+                <input type="text" id="promo-code-input" placeholder="ใส่รหัสโปรโมชั่น">
+                <button type="button" id="apply-promo-btn">ใช้ส่วนลด</button>
+            </div>
+
+            <div class="price-summary">
+                <div class="price-row">
+                    <span>ราคารวมค่าอาหาร</span>
+                    <span id="subtotal-price">0฿</span>
+                </div>
+                <div class="price-row" id="discount-row" style="display: none;">
+                    <span>ส่วนลด</span>
+                    <span id="discount-amount">-0฿</span>
+                </div>
+                <div class="price-row total">
+                    <span>ยอดรวมทั้งหมด</span>
+                    <span id="total-price">0฿</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="checkout-card">
+            <h2>ข้อมูลลูกค้า</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="name">ชื่อผู้รับ</label>
+                    <input type="text" id="name" required placeholder="กรอกชื่อผู้รับ">
+                </div>
+                <div class="form-group">
+                    <label for="phone">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="phone" required placeholder="0XX-XXX-XXXX">
+                </div>
+            </form>
+        </section>
+
+        <section class="checkout-card">
+            <h2>วิธีชำระเงิน</h2>
+            <div class="payment-options">
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="promptpay" checked>
+                    <i class="fas fa-qrcode"></i>
+                    <span>PromptPay QR Code</span>
+                </label>
+            </div>
+        </section>
+
+        <button type="submit" form="checkout-form" class="cta-button" id="submit-btn">
+            <i class="fas fa-check-circle"></i> ยืนยันคำสั่งซื้อ
+        </button>
+    </main>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2><i class="fas fa-qrcode"></i> สแกน QR Code เพื่อชำระเงิน</h2>
+            
+            <div id="qrcode-container"></div>
+            
+            <button id="payment-confirmed-btn">
+                <i class="fas fa-check"></i> กดเมื่อชำระเงินแล้ว
+            </button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="order-success-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content success-modal">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2>สั่งซื้อสำเร็จ!</h2>
+            <p>ออเดอร์ของคุณคือหมายเลข: <strong id="order-number-span">A000</strong></p>
+            <p class="success-note">กรุณาบันทึกภาพหน้าจอหรือจดหมายเลขออเดอร์ไว้<br>กำลังกลับสู่หน้าหลัก...</p>
+        </div>
+    </div>
+
+    <!-- Payment Timer -->
+    <div id="payment-timer-container">
+        <div class="timer-content">
+            <div class="timer-text-group">
+                <p>กรุณาสแกน QR Code เพื่อชำระเงิน</p>
+                <div id="countdown-timer">เหลือเวลาชำระเงิน: 05:00</div>
+            </div>
+            <button id="cancel-order-btn" class="cancel-btn">ยกเลิกออเดอร์</button>
+        </div>
+    </div>
+    
+    <!-- โหลด Scripts ตามลำดับที่ถูกต้อง -->
+    <!-- 1. API Helper ต้องโหลดก่อน -->
+    <script src="api.js"></script>
+    
+    <!-- 2. QR Code Library - ใช้วิธีที่เสถียร -->
+    <script>
+        // Load QR Code library with multiple fallbacks
+        function loadQRCodeLibrary() {
+            return new Promise((resolve, reject) => {
+                // Try first CDN
+                const script1 = document.createElement('script');
+                script1.src = 'https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js';
+                script1.onload = function() {
+                    window.QRCode = window.qrcode;
+                    console.log('✅ QR Code library loaded from unpkg');
+                    resolve();
+                };
+                script1.onerror = function() {
+                    console.warn('⚠️ First CDN failed, trying second...');
+                    
+                    // Try second CDN
+                    const script2 = document.createElement('script');
+                    script2.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+                    script2.onload = function() {
+                        console.log('✅ QR Code library loaded from cdnjs');
+                        resolve();
+                    };
+                    script2.onerror = function() {
+                        console.error('❌ All CDNs failed');
+                        reject(new Error('Failed to load QR Code library'));
+                    };
+                    document.head.appendChild(script2);
+                };
+                document.head.appendChild(script1);
+            });
+        }
+        
+        // Load QR Code library immediately
+        loadQRCodeLibrary().catch(console.error);
+    </script>
+    
+    <!-- 3. QR Generator - เวอร์ชันที่แก้ไขแล้ว -->
+    <script src="qr-generator-v2.js"></script>
+    
+    <!-- 4. Checkout Script (โหลดหลังสุด) -->
+    <script src="checkout.js"></script>
+    
+    <!-- ตรวจสอบการโหลด -->
+    <script>
+        window.addEventListener('load', function() {
+            console.log('🔍 System Check:');
+            console.log('✓ API Helper:', typeof window.API !== 'undefined' ? 'OK' : 'FAILED');
+            console.log('✓ QRCode library:', typeof QRCode !== 'undefined' ? 'OK' : 'FAILED');
+            console.log('✓ generatePromptPayQR:', typeof generatePromptPayQR !== 'undefined' ? 'OK' : 'FAILED');
+            
+            // Auto-retry loading if failed
+            if (typeof QRCode === 'undefined') {
+                console.log('🔄 Retrying QR Code library load...');
+                loadQRCodeLibrary().then(() => {
+                    console.log('✅ QR Code library loaded successfully on retry');
+                }).catch(() => {
+                    console.error('❌ QR Code library still failed to load');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
